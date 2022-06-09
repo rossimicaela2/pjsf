@@ -1,0 +1,67 @@
+{
+  "title": "V2_TEST",
+  "templateVersion": "test",
+  "argumentList": [
+    "documentos",
+    "numeroTramite",
+    "nombreUsuario",
+    "urlBase",
+    "urlDocumento",
+    "token",
+    "cl"
+  ],
+  "data": {
+    "signatureType": "PDF",
+    "pdfSignatureConfig": {
+      "VisibilityConfig": {
+        "signaturePage": "signaturesPage"
+      },
+      "reason": "Firmado por ${nombreUsuario}, para el tramite $numeroTramite, {$DATE}"
+    },
+    "certConfig": {
+      "certificateLocation": "${cl}",
+      "customPath": "${urlBase}/${cert}"
+    },
+    "formFields": {
+      "values": {
+        "cuil_habilitador": "20354414040",
+        "nombre_habilitador": "Ramos Ignacio",
+        "cuil_or": "20362650969",
+        "nombre_or": "Croppi Guillermo"
+      }
+    },
+    "fileOrigins": {
+      "remote": {
+        "URI": "${urlDocumento}",
+        "method": "GET",
+        "fileList": "${documentos}",
+        "headers": {
+          "Accept": "application/pdf",
+          "Authorization": "Basic ZmRAaW5kcmFmaXJtYToxQXFxcXFxcQ=="
+        }
+      }
+    },
+    "fileDestination": {
+      "remote": {
+        "URI": "${urlBase}",
+        "method": "POST",
+        "fileField": "archivo",
+        "formFields": {
+          "tramite": "$numeroTramite",
+          "firmado": true,
+          "idArchivo": "{$FILE_ID}"
+        }
+      }
+    },
+    "interfaz": {
+      "title": "Firmado de documentos simple",
+      "username": "$nombreUsuario"
+    },
+    "template": {
+      "id": "webtestplantilla_01",
+      "expiration": "1234567890",
+      "createdAt": "1247567890"
+    }
+  },
+  "signature": ""
+}
