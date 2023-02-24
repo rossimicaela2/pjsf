@@ -1,66 +1,56 @@
 {
   "title": "V2_TEST",
-  "templateVersion": "test",
+  "templateVersion": "6",
   "argumentList": [
     "documentos",
-    "numeroTramite",
-    "nombreUsuario",
     "urlBase",
     "urlDocumento",
-    "token",
-    "cl"
+    "fechaFirma"
   ],
   "data": {
     "signatureType": "PDF",
     "pdfSignatureConfig": {
       "VisibilityConfig": {
-        "signaturePage": "signaturesPage"
+        "signaturePage": "first",
+		"signatureLocation": "lower-left",
+        "fontSize": 8,
+        "font": "Courier"
       },
-      "reason": "Firmado por ${nombreUsuario}, para el tramite $numeroTramite, {$DATE}"
+      "reason": "Firmado Digitalmente por {$SIGNER}, el ${fechaFirma}."
     },
     "certConfig": {
-      "certificateLocation": "${cl}",
-      "customPath": "${urlBase}/${cert}"
-    },
-    "formFields": {
-      "values": {
-        "cuil_habilitador": "20354414040",
-        "nombre_habilitador": "Ramos Ignacio",
-        "cuil_or": "20362650969",
-        "nombre_or": "Croppi Guillermo"
-      }
+      "certificateLocation": ["MSCAPI","HWTOKEN","ASK"]
     },
     "fileOrigins": {
       "remote": {
-        "URI": "${urlDocumento}",
+        "URI": "${urlDocumento}/{$FILE_ID}",
         "method": "GET",
         "fileList": "${documentos}",
         "headers": {
-          "Accept": "application/pdf",
-          "Authorization": "Basic ZmRAaW5kcmFmaXJtYToxQXFxcXFxcQ=="
+          "Accept": "application/pdf"
         }
       }
     },
     "fileDestination": {
       "remote": {
-        "URI": "${urlBase}",
+        "URI": "${urlBase}/api/recibo/firmado",
         "method": "POST",
         "fileField": "archivo",
+        "keepName": true,
         "formFields": {
-          "tramite": "$numeroTramite",
           "firmado": true,
           "idArchivo": "{$FILE_ID}"
         }
       }
     },
     "interfaz": {
-      "title": "Firmado de documentos simple",
-      "username": "$nombreUsuario"
+      "title": "Firmado de documentos Plantilla TEST",
+      "hideDocuments": true
     },
     "template": {
-      "id": "webtestplantilla_01",
-      "expiration": "1234567890",
-      "createdAt": "1247567890"
+      "id": "test_plantilla_01",
+      "expiration": 1661262716733,
+      "createdAt": 1659966716733
     }
   },
   "signature": ""
