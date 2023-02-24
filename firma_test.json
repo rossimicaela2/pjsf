@@ -11,8 +11,8 @@
     "signatureType": "PDF",
     "pdfSignatureConfig": {
       "VisibilityConfig": {
-        "signaturePage": "last",
-		"signatureLocation": "lower-left",
+        "signaturePage": "signaturesPage",
+		"signatureLocation": "lower-center",
         "fontSize": 8,
         "font": "Courier"
       },
