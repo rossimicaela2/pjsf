@@ -12,7 +12,7 @@
     "pdfSignatureConfig": {
       "VisibilityConfig": {
         "signaturePage": "first",
-		"signatureLocation": "lower-center",
+		"signatureLocation": "signaturesPage",
         "fontSize": 8,
         "font": "Courier"
       },
