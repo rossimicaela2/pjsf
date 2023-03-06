@@ -10,12 +10,6 @@
   "data": {
     "signatureType": "PDF",
     "pdfSignatureConfig": {
-      "VisibilityConfig": {
-        "signaturePage": "first",
-		"signatureLocation": "lower-center",
-        "fontSize": 8,
-        "font": "Courier"
-      },
       "reason": "Firmado Digitalmente por {$SIGNER}, el ${fechaFirma}."
     },
     "certConfig": {
