@@ -3,6 +3,8 @@
   "templateVersion": "test",
   "argumentList": [
     "documentos",
+    "numeroTramite",
+    "nombreUsuario",
     "urlBase",
     "urlDocumento",
     "fechaFirma"
