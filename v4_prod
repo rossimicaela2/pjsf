@@ -1,0 +1,51 @@
+{
+  "title": "V2_PROD",
+  "templateVersion": "4",
+  "argumentList": [
+    "documentos",
+    "urlBase",
+    "urlDocumento",
+    "fechaFirma"
+  ],
+  "data": {
+    "signatureType": "PDF",
+    "pdfSignatureConfig": {
+		"reason": "Firmado Digitalmente por {$SIGNER}, el ${fechaFirma}."
+    },
+    "certConfig": {
+      "certificateLocation": ["MSCAPI","HWTOKEN","ASK"]
+    },
+    "fileOrigins": {
+      "remote": {
+        "URI": "${urlDocumento}/{$FILE_ID}",
+        "method": "GET",
+        "fileList": "${documentos}",
+        "headers": {
+          "Accept": "application/pdf"
+        }
+      }
+    },
+    "fileDestination": {
+      "remote": {
+        "URI": "${urlBase}/api/recibo/firmado",
+        "method": "POST",
+        "fileField": "archivo",
+        "keepName": true,
+        "formFields": {
+          "firmado": true,
+          "idArchivo": "{$FILE_ID}"
+        }
+      }
+    },
+    "interfaz": {
+      "title": "Firmado de documentos",
+      "hideDocuments": true
+    },
+    "template": {
+      "id": "indra_pj_prod_01",
+      "expiration": 1780185303000,
+      "createdAt": 1744415855000
+    }
+  },
+  "signature": "OYvYSC19ZD5LurauJBAUGV+9uVBl/xvuC2MZCClyX1YQ9XJw7BFKbL2bdsjJOpJs+vkRIAd2GUt5pLcLRGNbHY5qR7oCWrf08DI6eQIEv0o52NlpNkAe1nSzX0/bmq/OquHO4BtRY86cfMbIKRaCrCJuXbkPc9CehAk36pm8387QwwO/OyK/8KQ23DhwcUm8u/6xDOkMlWc4CtZ8yLZf3VtPIT83i4eO3daHc0xSJ+0VYHMiWmHDQREooPr/nWdLUtsq5fEGI1S9m6rwyjURe5Ecp9rlUxE5NbVxUgF0L6OLrxXdGzn35WSCYq1/Yt4kfRyvb3ErNwyUfqny4sDGVg=="
+}
